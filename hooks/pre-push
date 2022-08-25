@@ -1,4 +1,11 @@
 #!/bin/sh
+branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+echo $branch
+
+if [ $branch != "staging" ]
+then
+	exit 0
+fi
 
 master_commit=($(git rev-list master))
 staging_commit=($(git rev-list staging))
