@@ -2,7 +2,7 @@
 branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 echo "Current Branch Name: $branch"
 
-if [ $branch != "staging_1" ] || [ $branch != "staging_2" ] || [ $branch != "staging_3" ]
+if [ $branch != "staging_1" ] && [ $branch != "staging_2" ] && [ $branch != "staging_3" ]
 then
 	exit 0
 fi
