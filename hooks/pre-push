@@ -1,0 +1,29 @@
+#!/bin/sh
+
+master_commit=($(git rev-list master))
+staging_commit=($(git rev-list staging))
+
+echo "commits on master :- "
+
+for commit in ${master_commit[@]}
+do
+	echo $commit
+done
+echo "commits on staging :- "
+
+for commit in ${staging_commit[@]}
+do
+	echo $commit
+done
+staging_len=${#staging_commit[@]}
+master_len=${#master_commit[@]}
+
+echo $staging_len
+echo $master_len
+if [ ${#master_commit[@]} == ${#staging_commit[@]} ]
+ then
+	cat <<\EOF
+Error: commits on staging and master cannot be same it will affect the env PR
+EOF
+	exit 1
+fi
