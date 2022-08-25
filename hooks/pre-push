@@ -1,6 +1,6 @@
 #!/bin/sh
 branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-echo $branch
+echo "Current Branch Name: $branch"
 
 if [ $branch != "staging" ]
 then
@@ -8,7 +8,7 @@ then
 fi
 
 master_commit=($(git rev-list master))
-staging_commit=($(git rev-list staging))
+staging_commit=($(git rev-list $branch))
 
 echo "commits on master :- "
 
@@ -16,7 +16,7 @@ for commit in ${master_commit[@]}
 do
 	echo $commit
 done
-echo "commits on staging :- "
+echo "commits on ${branch} :-"
 
 for commit in ${staging_commit[@]}
 do
