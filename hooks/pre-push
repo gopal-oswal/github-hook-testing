@@ -7,7 +7,7 @@ then
 	exit 0
 fi
 
-master_commit=($(git rev-list remote/master))
+master_commit=($(git rev-list origin/master))
 staging_commit=($(git rev-list $branch))
 
 echo "commits on master :- "
